@@ -41,7 +41,7 @@ pico_sdk_init()
 # Add executable. Default name is the project name, version 0.1
 add_executable(meu_projeto_freertos
     src/main.c
-    #lib/ssd1306/ssd1306.c # Lib OLED
+    lib/ssd1306/ssd1306.c  # Lib OLED DISPLAY
     )
 
 pico_set_program_name(meu_projeto_freertos "meu_projeto_freertos")
@@ -56,6 +56,7 @@ target_link_libraries(meu_projeto_freertos
         pico_stdlib
         FreeRTOS-Kernel-Heap4
         hardware_i2c
+        hardware_pwm
         hardware_gpio)
 
 # Add the standard include files to the build
@@ -63,7 +64,7 @@ target_include_directories(meu_projeto_freertos PRIVATE
         ${CMAKE_CURRENT_LIST_DIR}
         ${CMAKE_CURRENT_LIST_DIR}/include
         ${CMAKE_CURRENT_LIST_DIR}/src
-        # ${CMAKE_CURRENT_LIST_DIR}/lib/ssd1306/include
+        ${CMAKE_CURRENT_LIST_DIR}/lib/ssd1306/include
 )
 
 pico_add_extra_outputs(meu_projeto_freertos)
